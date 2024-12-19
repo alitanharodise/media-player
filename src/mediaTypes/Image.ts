@@ -58,13 +58,11 @@ export class Image implements MediaFile {
 
     public play(callback: () => void): void {
         const onHide = () => {
-             this.imageElement.removeEventListener('load', onHide);
-            this.imageElement.style.display = 'none';
-            this.setStatus(MediaStatus.Ended);
+           this.imageElement.style.display = 'none';
+           this.setStatus(MediaStatus.Ended);
             callback();
         };
 
-        this.imageElement.addEventListener('load', onHide);
         setTimeout(() => {
             onHide();
         }, this.getDuration());
